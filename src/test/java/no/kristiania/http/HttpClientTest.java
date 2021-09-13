@@ -12,4 +12,10 @@ class HttpClientTest {
         HttpClient client = new HttpClient("httpbin.org", 80, "/html");
         assertEquals(200, client.getStatusCode());
     }
+
+    @Test
+    void shouldReturnFailStatusCode() throws IOException {
+        HttpClient client = new HttpClient("httpbin.org", 80, "/blahblah");
+        assertEquals(404, client.getStatusCode());
+    }
 }
